@@ -86,7 +86,7 @@ Adding the KernelShutdownExtension will make sure the kernel is shutdown after t
 
 ### SetUpAutowire addon
 
-The [draw/tester](https://github.com/mpoiriert/tester) component provide a way to autowire property in your test.
+The [draw/tester](https://github.com/cloud-officer/codraw-tester) component provide a way to autowire property in your test.
 
 This bundle provide some custom Autowire attribute that can use in the context of a Symfony test cases.
 

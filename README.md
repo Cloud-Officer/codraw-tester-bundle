@@ -1,5 +1,4 @@
-Draw Tester Bundle
-==================
+# Draw Tester Bundle
 
 This bundle integrate the Draw Tester Component.
 

@@ -1,4 +1,5 @@
-# Draw Tester Bundle
+Draw Tester Bundle
+==================
 
 This bundle integrate the Draw Tester Component.
 
@@ -85,11 +86,11 @@ Adding the KernelShutdownExtension will make sure the kernel is shutdown after t
 
 ### SetUpAutowire addon
 
-The [codraw/tester](https://github.com/cloud-officer/codraw-tester) component provide a way to autowire property in your test.
+The [draw/tester](https://github.com/mpoiriert/tester) component provide a way to autowire property in your test.
 
 This bundle provide some custom Autowire attribute that can use in the context of a Symfony test cases.
 
-Make sure to register is in your phpunit configuration file. as explained in the `codraw/tester` documentation.
+Make sure to register is in your phpunit configuration file. as explained in the `draw/tester` documentation.
 
 ```xml
 <phpunit bootstrap="vendor/autoload.php">

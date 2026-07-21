@@ -57,8 +57,8 @@ abstract class WebTestCase extends KernelTestCase
             $options,
             array_merge(
                 [
-                    'Content-Type' => 'application/json',
-                    'Accept' => 'application/json',
+                    'CONTENT_TYPE' => 'application/json',
+                    'HTTP_ACCEPT' => 'application/json',
                 ],
                 $server
             )

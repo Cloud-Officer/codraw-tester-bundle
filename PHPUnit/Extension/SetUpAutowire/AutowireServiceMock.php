@@ -37,16 +37,16 @@ class AutowireServiceMock extends AutowireMock
 
         $type = $reflectionProperty->getType();
 
-        \assert($type instanceof \ReflectionIntersectionType);
+        if ($type instanceof \ReflectionIntersectionType) {
+            foreach ($type->getTypes() as $type) {
+                \assert($type instanceof \ReflectionNamedType);
 
-        foreach ($type->getTypes() as $type) {
-            \assert($type instanceof \ReflectionNamedType);
+                if (MockObject::class === $type->getName()) {
+                    continue;
+                }
 
-            if (MockObject::class === $type->getName()) {
-                continue;
+                return $type->getName();
             }
-
-            return $type->getName();
         }
 
         throw new \RuntimeException('Cannot load service id from property '.$reflectionProperty->getName().' of class '.$reflectionProperty->getDeclaringClass()->getName());

@@ -34,7 +34,10 @@ trait EventDispatcherTesterTrait
     public static function cleanEventDispatcherFileContainerReference(string $filePath): void
     {
         $dom = new \DOMDocument();
-        $dom->load($filePath);
+
+        if (!$dom->load($filePath)) {
+            throw new \RuntimeException('Unable to load the XML file "'.$filePath.'".');
+        }
 
         $xpath = new \DOMXPath($dom);
 
@@ -68,11 +71,17 @@ trait EventDispatcherTesterTrait
 
         $resultFilePath = tempnam(sys_get_temp_dir(), 'event_dispatcher_configuration');
 
-        file_put_contents($resultFilePath, $display);
-
-        static::cleanEventDispatcherFile($resultFilePath);
+        if (false === $resultFilePath) {
+            throw new \RuntimeException('Unable to create a temporary file in "'.sys_get_temp_dir().'".');
+        }
 
         register_shutdown_function('unlink', $resultFilePath);
+
+        if (false === file_put_contents($resultFilePath, $display)) {
+            throw new \RuntimeException('Unable to write to the temporary file "'.$resultFilePath.'".');
+        }
+
+        static::cleanEventDispatcherFile($resultFilePath);
 
         if (!file_exists($expectedFilePath)) {
             copy($resultFilePath, $expectedFilePath);

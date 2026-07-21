@@ -46,10 +46,14 @@ class AutowireEntity implements AutowireInterface
 
         $entity = $this->getContainer($testCase)
             ->get(ManagerRegistry::class)
-            ->getManager()
+            ->getManagerForClass($class)
             ->getRepository($class)
             ->findOneBy($this->criteria)
         ;
+
+        if (null === $entity && !$reflectionProperty->getType()?->allowsNull()) {
+            throw new \RuntimeException('Cannot find entity '.$class.' with criteria '.json_encode($this->criteria).' for property '.$reflectionProperty->getName().' of class '.$testCase::class.'.');
+        }
 
         $reflectionProperty->setValue(
             $testCase,

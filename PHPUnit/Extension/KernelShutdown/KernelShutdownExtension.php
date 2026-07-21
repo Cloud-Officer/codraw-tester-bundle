@@ -22,7 +22,9 @@ class KernelShutdownExtension implements Extension
                 {
                     $test = $event->test();
 
-                    \assert($test instanceof TestMethod);
+                    if (!$test instanceof TestMethod) {
+                        return;
+                    }
 
                     KernelShutdownExtension::ensureKernelShutdown($test->className());
                 }
@@ -50,8 +52,13 @@ class KernelShutdownExtension implements Extension
             $method = $reflection->getMethod('ensureKernelShutdown');
             $method->invoke(null);
 
-            $reflection->getProperty('kernel')->setValue(null, null);
-            $reflection->getProperty('class')->setValue(null, null);
+            if ($reflection->hasProperty('kernel')) {
+                $reflection->getProperty('kernel')->setValue(null, null);
+            }
+
+            if ($reflection->hasProperty('class')) {
+                $reflection->getProperty('class')->setValue(null, null);
+            }
         }
     }
 }

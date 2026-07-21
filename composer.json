@@ -1,6 +1,6 @@
 {
     "name": "codraw/tester-bundle",
-    "description": "",
+    "description": "Symfony bundle providing test helpers: web test case, mailer/messenger/event-dispatcher assertions, SQL profiling and PHPUnit runner extensions.",
     "license": "MIT",
     "type": "symfony-bundle",
     "keywords": [
@@ -11,9 +11,11 @@
         "integration test"
     ],
     "require": {
+        "php": "^8.5",
         "ext-dom": "*",
         "codraw/core": "^0.39",
         "codraw/tester": "^0.39",
+        "phpunit/phpunit": "^11.3 || ^12.0",
         "symfony/browser-kit": "^6.4.0",
         "symfony/deprecation-contracts": "^3.5.0",
         "symfony/framework-bundle": "^6.4.0",
@@ -22,9 +24,19 @@
     },
     "require-dev": {
         "codraw/profiling": "^0.39",
-        "phpunit/phpunit": "^11.3 || ^12.0",
         "symfony/messenger": "^6.4.0",
         "symfony/yaml": "^6.4.0"
+    },
+    "suggest": {
+        "dama/doctrine-test-bundle": "To use the DoctrineTransactionExtension",
+        "doctrine/dbal": "To use the SQL profiling middleware (DBAL 4 is required)",
+        "doctrine/orm": "To use the SqlProfiler, the entity autowiring attributes and the temporary entity cleaner",
+        "codraw/profiling": "To enable the profiling integration",
+        "codraw/security": "To use the JWTLoginTrait",
+        "symfony/console": "To use the EventDispatcherTesterTrait",
+        "symfony/mailer": "To use the TemplatedMailerAssertionsTrait",
+        "symfony/messenger": "To use the TransportTester and the messenger related helpers",
+        "symfony/mime": "To use the TemplatedMailerAssertionsTrait"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

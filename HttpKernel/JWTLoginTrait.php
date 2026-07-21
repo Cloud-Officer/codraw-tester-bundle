@@ -29,6 +29,6 @@ trait JWTLoginTrait
 
     public function logout(): void
     {
-        unset($this->server['Authorization']);
+        unset($this->server['HTTP_AUTHORIZATION']);
     }
 }

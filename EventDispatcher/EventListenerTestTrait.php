@@ -4,7 +4,7 @@ namespace Draw\Bundle\TesterBundle\EventDispatcher;
 
 use PHPUnit\Framework\TestCase;
 
-trigger_deprecation('draw/tester-bundle', '0.10.44', 'The "%s" class is deprecated, use "%s" instead.', EventListenerTestTrait::class, EventDispatcherTesterTrait::class);
+trigger_deprecation('codraw/tester-bundle', '0.10.44', 'The "%s" class is deprecated, use "%s" instead.', EventListenerTestTrait::class, EventDispatcherTesterTrait::class);
 
 /**
  * @deprecated

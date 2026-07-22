@@ -86,11 +86,11 @@ Adding the KernelShutdownExtension will make sure the kernel is shutdown after t
 
 ### SetUpAutowire addon
 
-The [draw/tester](https://github.com/mpoiriert/tester) component provide a way to autowire property in your test.
+The [codraw/tester](https://github.com/mpoiriert/tester) component provide a way to autowire property in your test.
 
 This bundle provide some custom Autowire attribute that can use in the context of a Symfony test cases.
 
-Make sure to register is in your phpunit configuration file. as explained in the `draw/tester` documentation.
+Make sure to register is in your phpunit configuration file. as explained in the `codraw/tester` documentation.
 
 ```xml
 <phpunit bootstrap="vendor/autoload.php">
